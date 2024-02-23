@@ -1,5 +1,5 @@
 <template>
-  <NavbarComp/>
+  <NavbarComp />
 </template>
 
 <script>
