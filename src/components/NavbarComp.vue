@@ -32,9 +32,8 @@
         </nav>
         <nav class="secondNav">
             <div class="container-fluid d-flex flex-row justify-content-end">
-                <h4>login</h4>
-                <span> . </span>
-                <h4>register</h4>
+                <LoginComp/>
+                <SignupComp/>
             </div>
         </nav>
         <router-view />
@@ -42,8 +41,14 @@
 </template>
 
 <script>
-export default {
+import SignupComp from './SignupComp.vue';
+import LoginComp from './LoginComp.vue';
 
+export default {
+    components: {
+        SignupComp,
+        LoginComp
+    }
 }
 </script>
 
