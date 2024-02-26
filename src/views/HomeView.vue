@@ -27,7 +27,7 @@
     </div>
   </div>
   <section>
-    <h2>Latest Products</h2>
+    <h1>Latest Products</h1>
     <div v-if="latestProducts.length > 0">
       <CardComp :filteredProducts="latestProducts" class="d-flex justify-content-center">
         <template #ProductName="{ product }">
@@ -40,6 +40,29 @@
     </div>
     <div v-else>
       <SpinnerComp />
+    </div>
+  </section>
+  <section>
+    <div class="container my-5">
+      <h2>Partnered By</h2>
+      <div class="row">
+        <div class="col">
+          <img src="https://i.postimg.cc/nhmBZb53/image-2024-02-26-233023603.png" alt="partner">
+        </div>
+        <div class="col">
+          <img src="https://i.postimg.cc/6phRTLWZ/processor-overview-framed-badge-rwd-jpg-rendition-intel-web-480-270.jpg"
+            alt="partner">
+        </div>
+        <div class="col">
+          <img src="https://i.postimg.cc/MKmXY6C2/05-Mv-Zi-HAYTFEo-BAux-Ou0-Tcl-12.webp" alt="partner">
+        </div>
+        <div class="col">
+          <img src="https://i.postimg.cc/52tvYQ6k/HD-wallpaper-asus-carbon-logo-grunge-art-carbon-background-creative-asus-black-logo-asus-logo-asus.jpg" alt="partner">
+        </div>
+        <div class="col">
+          <img src="https://i.postimg.cc/sgSzJwQB/C64-ADF9-E-9-B21-41-B2-BB4-E-B61164-D6735-F.png" alt="partner">
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -58,7 +81,7 @@ export default {
     latestProducts() {
       if (this.$store.state.products) {
         const sortedProducts = this.$store.state.products.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        return sortedProducts.slice(0, 3);
+        return sortedProducts.slice(0, 5);
       } else {
         return [];
       }
@@ -69,9 +92,25 @@ export default {
       try {
         this.$store.dispatch('fetchProducts');
       } catch (error) {
-        alert('No Database Connection',error)
+        alert('No Database Connection', error)
       }
     }, 750);
   }
 }
 </script>
+
+<style scoped>
+img[alt="partner"] {
+  width: 150px;
+  margin: 2em;
+  border-radius: .3pc;
+  filter: gray;
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all .6s ease;
+  -webkit-backface-visibility: hidden;
+}
+
+img[alt="partner"]:hover {
+  -webkit-filter: grayscale(0%);
+  width: 175px;
+}</style>
