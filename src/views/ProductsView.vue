@@ -240,4 +240,5 @@ img[alt="cons"]:hover {
 img[alt="lapcat"]:hover {
     width: 220px;
 }
+
 </style>
