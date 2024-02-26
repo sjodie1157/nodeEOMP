@@ -62,7 +62,7 @@
             </div>
         </div>
         <div v-else>
-            <img src="../assets/CSS/videos/Content.gif" alt="spinner" loading="eager">
+            <iframe src="https://giphy.com/embed/CikXCxZ47IAcnAMiVc" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
         </div>
     </div>
 </template>
