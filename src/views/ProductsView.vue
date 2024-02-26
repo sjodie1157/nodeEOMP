@@ -1,27 +1,19 @@
 <template>
     <div>
-        <ul>
-            <li v-for="product in products" :key="product.prodID">
-                {{ product.prodName }}
-            </li>
-        </ul>
+        <h1>Gaming Hardware</h1>
+        <CardComp />
     </div>
 </template>
 
 <script>
+import CardComp from '@/components/CardComp.vue';
 export default {
-    computed: {
-        products() {
-            return this.$store.state.products;
-        }
-    },
-    mounted() {
-        this.$store.dispatch('fetchProducts');
-    },
-    methods: {
-
-    },
+    components: {
+        CardComp
+    }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
