@@ -1,7 +1,7 @@
-// import mysql from 'mysql2' 
-// import {config} from 'dotenv'
+import mysql from 'mysql2' 
+import {config} from 'dotenv'
 
-// config();
+config();
 
 export default {
     pool: mysql.createPool({
