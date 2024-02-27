@@ -24,7 +24,7 @@ export default createStore({
   actions: {
     async fetchProducts(context) {
       try {
-        let res = await fetch(`https://tnfz-backend-2.onrender.com/products`);
+        let res = await fetch(`https://nodeeomp-api.onrender.com/products`);
         if (!res.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -36,7 +36,7 @@ export default createStore({
     },
     async fetchProduct(context, prodID) {
       try {
-        let res = await fetch(`https://tnfz-backend-2.onrender.com/products/${prodID}`);
+        let res = await fetch(`https://nodeeomp-api.onrender.com/products/${prodID}`);
         if (!res.ok) {
           throw new Error('Failed to fetch product');
         }
