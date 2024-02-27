@@ -1,10 +1,10 @@
 <template>
     <div>
         <!-- bootstrap modified navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div class="container-fluid">
                 <img src="https://i.postimg.cc/d3SSPcn1/remove-bg.png" alt="logo">
-                <h3>TECHNOFLEX-ZONE</h3>
+                <h6>TECHNOFLEX-ZONE</h6>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,12 +32,12 @@
         </nav>
         <nav class="secondNav">
             <div class="container-fluid d-flex flex-row justify-content-end">
-                <LoginComp/>
-                <SignupComp/>
+                <LoginComp />
+                <SignupComp />
             </div>
         </nav>
-        <router-view />
     </div>
+    <router-view />
 </template>
 
 <script>
@@ -60,13 +60,14 @@ img[alt='logo'] {
 .nav-link {
     font-size: 20px;
 }
+
 .nav-link:hover {
     color: red;
 }
 
 .secondNav {
     background-color: red;
-    margin: 0;
     padding: 0;
+    margin: 5em 0 0 0 ;
 }
 </style>
