@@ -1,5 +1,8 @@
 <template>
   <NavbarComp />
+  <main>
+    
+  </main>
   <FooterComp/>
 </template>
 
@@ -14,6 +17,7 @@ export default {
     FooterComp
   }
 };
+
 </script>
 
 <style src="./assets/CSS/styles.css">

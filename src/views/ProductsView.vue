@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="container">
-            <h1>Items</h1>
+            <h2>Items</h2>
             <div v-if="products">
                 <div>
                     <div>

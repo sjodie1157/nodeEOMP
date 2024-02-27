@@ -26,8 +26,7 @@
       </div>
     </div>
   </div>
-  <section>
-    <h1>Latest Products</h1>
+    <h2>Latest Products</h2>
     <div v-if="latestProducts.length > 0">
       <CardComp :filteredProducts="latestProducts" class="d-flex justify-content-center">
         <template #ProductName="{ product }">
@@ -41,7 +40,6 @@
     <div v-else>
       <SpinnerComp />
     </div>
-  </section>
   <section>
     <div class="container my-5">
       <h2>Partnered By</h2>
