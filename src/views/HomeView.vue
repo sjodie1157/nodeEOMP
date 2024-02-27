@@ -57,7 +57,9 @@
           <img src="https://i.postimg.cc/MKmXY6C2/05-Mv-Zi-HAYTFEo-BAux-Ou0-Tcl-12.webp" alt="partner">
         </div>
         <div class="col">
-          <img src="https://i.postimg.cc/52tvYQ6k/HD-wallpaper-asus-carbon-logo-grunge-art-carbon-background-creative-asus-black-logo-asus-logo-asus.jpg" alt="partner">
+          <img
+            src="https://i.postimg.cc/52tvYQ6k/HD-wallpaper-asus-carbon-logo-grunge-art-carbon-background-creative-asus-black-logo-asus-logo-asus.jpg"
+            alt="partner">
         </div>
         <div class="col">
           <img src="https://i.postimg.cc/sgSzJwQB/C64-ADF9-E-9-B21-41-B2-BB4-E-B61164-D6735-F.png" alt="partner">
@@ -101,7 +103,8 @@ export default {
 
 <style scoped>
 img[alt="partner"] {
-  width: 150px;
+  width: 145px;
+  height: 90px;
   margin: 2em;
   border-radius: .3pc;
   filter: gray;
@@ -111,6 +114,9 @@ img[alt="partner"] {
 }
 
 img[alt="partner"]:hover {
+  position: relative;
+  width: 165px;
+  height: 95px;
   -webkit-filter: grayscale(0%);
-  width: 175px;
-}</style>
+}
+</style>
