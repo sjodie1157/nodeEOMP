@@ -50,7 +50,9 @@
                                 <a href="#"><button type="button" class="btn btn-primary">Add</button></a>
                             </div>
                             <div class="col">
-                                <a href="#"><button type="button" class="btn btn-secondary">Details</button></a>
+                                <router-link :to="'/product/' + product.prodID">
+                                    <button type="button" class="btn btn-secondary">Details</button>
+                                </router-link>
                             </div>
                         </div>
                     </template>
@@ -60,7 +62,7 @@
                 </div>
             </div>
             <div v-else>
-                <SpinnerComp/>
+                <SpinnerComp />
             </div>
         </div>
     </div>
@@ -130,16 +132,18 @@ export default {
         filterByCategory(category) {
             this.currentCategory = category;
         },
-        search() {
-        }
+        search() { }
     },
     mounted() {
         try {
             setTimeout(() => {
-                this.$store.dispatch('fetchProducts');
-            }, 800);
+                this.$store.dispatch('fetchProducts')
+            }, 800).then(() => {
+            }).catch(error => {
+                console.error('Error fetching products:', error);
+            });
         } catch (error) {
-            alert('No connection available');
+            console.error('No connection available');
         }
     }
 }
@@ -240,5 +244,4 @@ img[alt="cons"]:hover {
 img[alt="lapcat"]:hover {
     width: 220px;
 }
-
 </style>

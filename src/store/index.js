@@ -1,28 +1,51 @@
 import { createStore } from 'vuex';
 
-// let serverURL = 'https://tnfz-backend-2.onrender.com';
-
 export default createStore({
   state: {
     products: null,
+    product: null
   },
   getters: {
-    products(state) {
+    allProducts(state) {
       return state.products;
+    },
+    getProduct(state) {
+      return state.product;
     }
   },
   mutations: {
     setProducts(state, value) {
       state.products = value;
+    },
+    setProduct(state, value) {
+      state.product = value;
     }
   },
   actions: {
     async fetchProducts(context) {
-      let res = await fetch(`https://tnfz-backend-2.onrender.com/products`);
-      let json = await res.json();
-      context.commit('setProducts', json)
-      console.log(context);
+      try {
+        let res = await fetch(`https://tnfz-backend-2.onrender.com/products`);
+        if (!res.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        let json = await res.json();
+        context.commit('setProducts', json);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
     },
+    async fetchProduct(context, prodID) {
+      try {
+        let res = await fetch(`https://tnfz-backend-2.onrender.com/products/${prodID}`);
+        if (!res.ok) {
+          throw new Error('Failed to fetch product');
+        }
+        let json = await res.json();
+        context.commit('setProduct', json);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    }
   },
   modules: {
   }
