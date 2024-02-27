@@ -82,12 +82,17 @@ export default {
   computed: {
     latestProducts() {
       if (this.$store.state.products) {
-        const sortedProducts = this.$store.state.products.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        return sortedProducts.slice(0, 5);
+        const sortedProducts = this.$store.state.products.slice().sort((a, b) => b.createdAt - a.createdAt);
+        const latestFiveProducts = [];
+        while (latestFiveProducts.length < 5 && sortedProducts.length > 0) {
+          latestFiveProducts.push(sortedProducts.pop());
+        }
+        return latestFiveProducts;
       } else {
         return [];
       }
     }
+
   },
   mounted() {
     setTimeout(() => {
