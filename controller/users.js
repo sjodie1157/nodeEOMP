@@ -42,8 +42,8 @@ export default {
     },
     addAUser: async (req, res)=>{
         console.log('The addUser fx is working now')
-        let {username, txtPassword} = req.body
-        await addAUser(username, txtPassword)
+        let {username, txtPassword, firstName, lastName, userAge, gender, emailAdd, userProfile} = req.body
+        await addAUser(username, txtPassword, firstName, lastName, userAge, gender, emailAdd, userProfile)
         const token = jwt.sign({username: username}, process.env.SECRET_KEY, {expiresIn: '1h'})
         console.log(`the following user "${username}" has been created, had its password hashed and was assigned the following token that expires at 11am : ${token}`)
         try{

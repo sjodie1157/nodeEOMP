@@ -92,16 +92,16 @@ let addAProduct = async (prodName, quantity, price, category, prodDesc, imgUrl) 
 // console.log(await userByUsername('Jodie'))
 
 
-const addAUser = async(username, password)=>{
+const addAUser = async(username, password, firstName, lastName, userAge, gender, emailAdd, userProfile)=>{
     let hashedPassword = bcrypt.hash(password, 10, async(err, hash) => {
         if (err){
           console.error(err);  
         } else {
             console.log(`Hashed password is as follows: ${hash}`)
             await pool.query(`
-            INSERT INTO tnfz_users (username, hashedPassword, txtPassword) 
-            VALUES (?, ?, ?)
-            `,[username, hash, password] )
+            INSERT INTO tnfz_users (username, hashedPassword, txtPassword,firstName, lastName, userAge, gender, emailAdd, userProfile) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `,[username, hash, password, firstName, lastName, userAge, gender, emailAdd, userProfile] )
             console.log(`The following user was created: username = ${username}, password = ${password}, hashedPassword = ${hash}`)
         }
     }) // NOTE: Up till here runs correctly
