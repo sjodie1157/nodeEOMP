@@ -11,6 +11,14 @@ config();
 const app = express()
 
 app.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:8081',
+    // Put in the firebase address here so Godwin can access it
+    optionsSuccessStatus:200
+}
+
+app,use(cors)(corsOptions)
+
 app.use(express.json())
 app.use(cookieParser())
 
