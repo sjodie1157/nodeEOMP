@@ -16,9 +16,9 @@
                                             alt="signup">
                                     </div>
                                     <div class="col">
-                                        <h1>
+                                        <h2>
                                             Sign Up
-                                        </h1>
+                                        </h2>
                                         <div class="mb-0">
                                             <label for="message-text" id="recipient-email" class="col-form-label"></label>
                                             <input type="text" class="form-control" id="recipient-email"
