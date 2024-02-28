@@ -7,7 +7,7 @@
                         <img :src="product[0].imgUrl" alt="product">
                     </div>
                     <div class="col-sm d-flex flex-column align-items-start my-2 justify-content-around">
-                        <h1>Item Name: {{ product[0].prodName }}</h1>
+                        <h2>Item Name: {{ product[0].prodName }}</h2>
                         <h3>Price: R{{ product[0].price }}</h3>
                         <h3 class="d-flex align-items-start">Specs: {{ product[0].prodDesc }}</h3>
                         <button type="button">Add To Cart</button>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="row">
                     <div class="col d-flex justify-content-start">
-                        <h1>Reviews</h1>
+                        <h3>Reviews</h3>
                     </div>
                 </div>
                 <div class="row">

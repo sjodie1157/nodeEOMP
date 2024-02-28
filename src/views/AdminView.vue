@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Inventory configure</h1>
+        <h2>Inventory configure</h2>
     </div>
 </template>
 
