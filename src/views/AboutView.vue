@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="about" v-if="showAbout">
+    <div class="about" v-if="onVideoLoaded && showAbout">
       <section class="sec-back1">
         <div class="container">
           <div class="row">
@@ -25,7 +25,7 @@
       </section>
       <section class="sec-red"></section>
       <section class="aboutVid flex-column align-items-center justify-content-around">
-        <video src="../assets/videos/Untitled video - Made with Clipchamp (1).mp4" autoplay loop></video>
+        <video src="../assets/videos/Untitled video - Made with Clipchamp (1).mp4" autoplay loop @loadedmetadata="onVideoLoaded"></video>
       </section>
       <section class="sec-red" id="sec2">
         <h2 id="upskill">At <span>Technoflex-zone</span>, 10% of all proceeds goes towards teaching computer literacy
@@ -56,6 +56,11 @@ export default {
     return {
       showAbout: false
     };
+  },
+  methods: {
+    onVideoLoaded() {
+      this.videoLoading = false;
+    }
   },
   mounted() {
     setTimeout(() => {
