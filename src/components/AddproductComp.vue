@@ -80,6 +80,7 @@ export default {
             // setTimeout(() => {
             //     location.href('https://technoflex-zone.web.app/admin')
             // }, 300);
+            
         },
         clearInputFields() {
             // Note to Naeema: Clear all input fields in newProduct object
