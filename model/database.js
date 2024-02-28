@@ -66,31 +66,9 @@ let addAProduct = async (prodName, quantity, price, category, prodDesc, imgUrl) 
 // NOTE TO JODIE: 
 //      1) This fx needs the product name to be unique else it will return
 //         >1 item
-//      2) All the fields in the "add product" modal need a "required"      
-//         attribute since the columns in the database all have a "NOT NULL" constraint
+//      2) All the fields in the "add product" modal need a "required" attribute since the columns in the database all have a "NOT NULL" constraint
 
 // PROBLEM: This fx is not dynamic and requires ALL values to be present. This is necessary since the website will look untidy/uneven if there are some elements missing.
-
-// let addAUser = async (username, hashedPassword, txtPassword) =>{
-//     let insertUser = await pool.query(`
-//     INSERT INTO tnfz_users (username, hashedPassword, txtPassword) VALUES (?, ?, ?)
-//     `, [username, hashedPassword, txtPassword]) 
-//     let [newUser] = await pool.query(`
-//     SELECT * FROM tnfz_users WHERE username = ?
-//     `, [username])
-//     return newUser
-// }
-// console.log(await addAUser("AddUserFx", "sadegtyuikolkjmngvfdsfrtyuik", "qwertyuioplkjhgfdsa"))
-
-// const userByUsername = async (username)=>{
-//     let [user] = await pool.query(`
-//     SELECT * FROM tnfz_users WHERE username = ?
-//     `, [username])
-//     console.log(`This is the returned user: ${user}`)
-//     return user
-// } // The fx above is redundant coz checkUser already checks by username
-// console.log(await userByUsername('Jodie'))
-
 
 const addAUser = async(username, password, firstName, lastName, userAge, gender, emailAdd, userProfile)=>{
     let hashedPassword = bcrypt.hash(password, 10, async(err, hash) => {
@@ -108,8 +86,6 @@ const addAUser = async(username, password, firstName, lastName, userAge, gender,
     let [createdUser] = await checkUser(username)
     return createdUser
 }
-// console.log(await addAUser("AddUserFx5", "Boqorada5"))
-
 
 let editProduct = async (id, prodName, quantity, price, category, prodDesc, imgUrl) => {
     if(prodName){
@@ -142,24 +118,47 @@ let editProduct = async (id, prodName, quantity, price, category, prodDesc, imgU
 
 // NOTE TO SELF: The conditional statements of the editProduct() fx work when true and when values are empty/null. The ternary operator work at true and false as well
 
-// NOTE TO JODIE: This function needs a required at the id since it won't work w/out the product id. It also needs to be streamlined so that it takes as little line of code as possible
+// NOTE TO JODIE: This function needs a required at the id since it won't work w/out the product id.
 
-let editUser = async (id, username, hashedPassword, txtPassword) => {
+let editUser = async (id, username, txtPassword, firstName, lastName, userAge, gender, emailAdd, userProfile, userRole) => {
     let editUsername = username ? await pool.query(`UPDATE tnfz_users SET username = ? WHERE userID = ?`, [username, id]) : console.log("There is no username to be updated")
 
     let editTxtpassword = txtPassword ? await pool.query(`UPDATE tnfz_users SET txtPassword = ? WHERE userID = ?`, [txtPassword, id]) : console.log("There is no txtPassword to be updated")
 
-    let editHashpasword = hashedPassword ? await pool.query(`UPDATE tnfz_users SET hashedPassword = ? WHERE userID = ?`, [hashedPassword, id]) : console.log("There is no hashedPassword to be updated")
+    let editHashPassword = txtPassword ? bcrypt.hash(txtPassword, 10, async(err, hash) => {
+        if (err){
+          console.error(err);  
+        } else {
+            console.log(`Hashed password is as follows: ${hash}`)
+            await pool.query(`
+            UPDATE tnfz_users SET hashedPassword = ? WHERE userID = ?
+            `,[hash, id] )
+        }
+    }) : console.log("There is no hashPassword to be updated")
+
+    let editFirstName = firstName ? await pool.query(`UPDATE tnfz_users SET firstName = ? WHERE userID = ?`, [firstName, id]) : console.log("There is no firstName to be updated")
+
+    let editLastName = lastName ? await pool.query(`UPDATE tnfz_users SET lastName = ? WHERE userID = ?`, [lastName, id]) : console.log("There is no lastName to be updated")
+
+    let editUserAge = userAge ? await pool.query(`UPDATE tnfz_users SET userAge = ? WHERE userID = ?`, [userAge, id]) : console.log("There is no userAge to be updated")
+
+    let editGender = gender ? await pool.query(`UPDATE tnfz_users SET gender = ? WHERE userID = ?`, [gender, id]) : console.log("There is no gender to be updated")
+
+    let editEmailAdd = emailAdd ? await pool.query(`UPDATE tnfz_users SET emailAdd = ? WHERE userID = ?`, [emailAdd, id]) : console.log("There is no emailAdd to be updated")
+
+    let editUserProfile = userProfile ? await pool.query(`UPDATE tnfz_users SET userProfile = ? WHERE userID = ?`, [userProfile, id]) : console.log("There is no userProfile to be updated")
+
+    let editUserRole = userRole ? await pool.query(`UPDATE tnfz_users SET userRole = ? WHERE userID = ?`, [userRole, id]) : console.log("There is no userRole to be updated")
 
     let editedUser = await getAUser(id)
     return editedUser
 }
 
 // Test 1: does the 'true' condition work
-// await editUser(3, "Testing editUser() fx", 12, 15.32)
+// await editUser(1, "username", "txtPassword", "firstName", "lastName", 15, "gender", "emailAdd", "userProfile")
 
 // Test 2: does the 'false' condition work
-// await editUser(1, null, null, null, null, null)
+// await editUser(1, null, null, null, null, null, null, null, null, "admin")
 
 let deleteProduct = async (id) => {
     let deletedProduct = await getAProduct(id)

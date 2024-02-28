@@ -57,8 +57,8 @@ export default {
     },
     editAUser: async (req, res) => {
         let UserID = req.params.id
-        let {username, hashedPassword, txtPassword} = req.body
-        let theEditedUser = await editUser(UserID, username, hashedPassword, txtPassword)
+        let {username, hashedPassword, txtPassword, firstName, lastName, userAge, gender, emailAdd, userProfile} = req.body
+        let theEditedUser = await editUser(UserID, username, hashedPassword, txtPassword, firstName, lastName, userAge, gender, emailAdd, userProfile)
         res.send(theEditedUser)
     },
     deleteAUser: async (req, res) => {
