@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import axios from 'axios'
 
 export default createStore({
   state: {
@@ -45,7 +46,18 @@ export default createStore({
       } catch (error) {
         console.error('Error fetching product:', error);
       }
+    },
+    async editProduct(context, newInfo){
+      let {prodID, prodName} = newInfo
+      console.log(`This is the axios.patch. The returned data is as follows: name is ${prodName} with a datatype of ${typeof(prodName)} and id is ${prodID} with a datatype of ${typeof(prodID)}`)
+      await axios.patch(`https://nodeeomp-api.onrender.com/products/${prodID}`, newInfo)
+    },
+    async addProduct(context, newInfo){
+      let {prodName, quantity} = newInfo
+      console.log(`This is the axios.post. The returned data is as follows: name is ${prodName} with a datatype of ${typeof(prodName)} and quantity is ${quantity} with a datatype of ${typeof(quantity)}`)
+      await axios.post(`https://nodeeomp-api.onrender.com/products`, newInfo)
     }
+    
   },
   modules: {
   }

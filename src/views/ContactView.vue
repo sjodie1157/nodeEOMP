@@ -87,7 +87,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 
 label, input {
     margin: 5px;
