@@ -77,9 +77,9 @@ export default {
             this.clearInputFields();
 
             // Note to Naeema: Reload page after adding the product
-            setTimeout(() => {
-                location.href('https://technoflex-zone.web.app/admin')
-            }, 300);
+            // setTimeout(() => {
+            //     location.href('https://technoflex-zone.web.app/admin')
+            // }, 300);
         },
         clearInputFields() {
             // Note to Naeema: Clear all input fields in newProduct object
