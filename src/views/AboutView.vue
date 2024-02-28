@@ -27,16 +27,16 @@
       <section class="aboutVid flex-column align-items-center justify-content-around">
         <video src="../assets/videos/Untitled video - Made with Clipchamp (1).mp4" autoplay loop></video>
       </section>
-      <section class="sec-red">
-        <h2>At <span>Technoflex-zone</span>, 10% of all proceeds goes towards teaching computer literacy
+      <section class="sec-red" id="sec2">
+        <h2 id="upskill">At <span>Technoflex-zone</span>, 10% of all proceeds goes towards teaching computer literacy
           skills in schools in
           <span>under-resourced</span> communities so that the <span>youth of tomorrow</span> are not deprived of
           opportunities due to a <span>lack of skills.</span>
         </h2>
       </section>
       <section class="sec-back3 d-flex justify-content-around">
-        <img src="https://i.postimg.cc/d3SSPcn1/remove-bg.png" alt="logo">
-        <h1>TECHNO<span>FLEX</span>-ZONE</h1>
+        <img src="https://i.postimg.cc/d3SSPcn1/remove-bg.png" alt="logo" id="logo">
+        <h1 id="name">TECHNO<span>FLEX</span>-ZONE</h1>
       </section>
     </div>
     <div v-else class="my-5">
@@ -64,7 +64,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 .about {
   position: relative;
@@ -111,20 +110,85 @@ export default {
 
 @media screen and (min-width: 300px) and (max-width: 720px) {
   .aboutVid {
-    height: 50vh;
+    height: 30vh;
+  }
+
+  #logo {
+    max-width: 100px;
+  }
+
+  #name {
+    font-size: 20px;
+  }
+
+  #upskill {
+    font-size: 10px;
+    margin: 2em 0;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .sec-red,
+  #sec2 {
+    background-color: black;
+    height: 5vh;
+  }
+
+  h2 {
+    position: relative;
+    font-size: 25px;
+  }
+
+  .par2 {
+    font-size: 20px;
   }
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 721px) and (max-width: 1440px) {
   .aboutVid {
-    height: 76vh;
+    height: 60vh;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  #upskill {
+    font-size: 15px;
+  }
+
+  .par2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .aboutVid {
+    height: 80vh;
+  }
+
+  h1 {
+    font-size: 75px;
+  }
+
+  h2 {
+    font-size: 35px;
+  }
+
+  .par2 {
+    font-size: 35px;
   }
 }
 
 h1 {
   color: white;
   margin: 2em 0;
-  font-size: 75px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -132,20 +196,17 @@ h2 {
   position: absolute;
   color: white;
   margin: 2em 4em;
-  font-size: 35px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .par2 {
   color: white;
-  font-size: 35px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 h4 {
   position: absolute;
   color: grey;
-  font-size: 35px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
