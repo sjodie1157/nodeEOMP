@@ -4,7 +4,7 @@
             <div class="col d-flex flex-wrap justify-content-lg-start justify-content-center justify-content-sm-center">
                 <div v-for="product in filteredProducts" :key="product.prodID">
                     <div class="card m-2" style="width: 14.9rem;">
-                        <img :src="product.imgUrl" class="card-img-top" :alt="product.prodName">
+                        <img :src="product.imgUrl" class="card-img-top" :alt="product.prodName" loading="eager">
                         <div class="card-body d-flex flex-column justify-content-end">
                             <h5 class="card-title">
                                 <slot name="ProductName" :product="product"></slot>

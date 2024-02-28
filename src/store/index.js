@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import axios from 'axios'
+import axios from 'axios';
 
 export default createStore({
   state: {
@@ -20,6 +20,9 @@ export default createStore({
     },
     setProduct(state, value) {
       state.product = value;
+    },
+    removeProduct(state, prodID) {
+      state.products = state.products.filter(product => product.prodID !== prodID);
     }
   },
   actions: {
@@ -47,17 +50,31 @@ export default createStore({
         console.error('Error fetching product:', error);
       }
     },
-    async editProduct(context, newInfo){
-      let {prodID, prodName} = newInfo
-      console.log(`This is the axios.patch. The returned data is as follows: name is ${prodName} with a datatype of ${typeof(prodName)} and id is ${prodID} with a datatype of ${typeof(prodID)}`)
-      await axios.patch(`https://nodeeomp-api.onrender.com/products/${prodID}`, newInfo)
+    async editProduct(context, { newInfo, prodID }) {
+      try {
+        await axios.patch(`https://nodeeomp-api.onrender.com/products/${prodID}`, newInfo);
+      } catch (error) {
+        console.error('Error editing product:', error);
+        throw new Error('Failed to edit product');
+      }
     },
-    async addProduct(context, newInfo){
-      let {prodName, quantity} = newInfo
-      console.log(`This is the axios.post. The returned data is as follows: name is ${prodName} with a datatype of ${typeof(prodName)} and quantity is ${quantity} with a datatype of ${typeof(quantity)}`)
-      await axios.post(`https://nodeeomp-api.onrender.com/products`, newInfo)
+    async addProduct(context, newInfo) {
+      try {
+        await axios.post(`https://nodeeomp-api.onrender.com/products`, newInfo);
+      } catch (error) {
+        console.error('Error adding product:', error);
+        throw new Error('Failed to add product');
+      }
+    },
+    async deleteProduct(context, prodID) {
+      try {
+        await axios.delete(`https://nodeeomp-api.onrender.com/products/${prodID}`);
+        context.commit('removeProduct', prodID);
+      } catch (error) {
+        console.error('Error deleting product:', error);
+        throw new Error('Failed to delete product');
+      }
     }
-    
   },
   modules: {
   }
