@@ -1,15 +1,11 @@
 <template>
   <NavbarComp />
-  <main>
-    
-  </main>
-  <FooterComp/>
+  <FooterComp />
 </template>
 
 <script>
 import NavbarComp from '@/components/NavbarComp.vue';
 import FooterComp from './components/FooterComp.vue';
-FooterComp
 
 export default {
   components: {
@@ -20,6 +16,4 @@ export default {
 
 </script>
 
-<style src="./assets/CSS/styles.css">
-
-</style>
+<style src="./assets/CSS/styles.css"></style>
