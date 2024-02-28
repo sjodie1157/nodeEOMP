@@ -122,4 +122,5 @@ img[alt="partner"]:hover {
   height: 95px;
   -webkit-filter: grayscale(0%);
 }
+
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Note to Naeema: Added button to trigger the Bootstrap modal and added the product ids -->
-        <button type="button" class="btn" data-bs-toggle="modal" :data-bs-target="'#editprodmodal' + product.prodID">
+        <button type="button" class="btn my-2" data-bs-toggle="modal" :data-bs-target="'#editprodmodal' + product.prodID">
             Edit
         </button>
         <!-- Note to Naeema: Bootstrap modal for editing product Changed from the created one -->
@@ -78,4 +78,20 @@ export default {
 </script>
 
 <style scoped>
+button {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: .3pc;
+    border: 2px solid red;
+    color: white;
+    background-color: red;
+    transition: all .3s;
+}
+
+button:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    color: red;
+    border-color: red;
+    background-color: white;
+}
+
 </style>

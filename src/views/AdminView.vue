@@ -3,7 +3,9 @@
     <h2>Inventory configure</h2>
     <h1>Products</h1>
     <!-- AddProductModal component -->
-    <AddproductComp />
+    <div class="container my-4">
+      <AddproductComp />
+    </div>
 
     <div class="table-responsive">
       <table class="table">
@@ -27,7 +29,7 @@
             <td>{{ product.category }}</td>
             <td>{{ product.prodDesc }}</td>
             <td>
-              <UpdateproductComp :product="product" @editProduct="editProduct" />
+              <UpdateproductComp :product="product" @editProduct="editProduct"/>
               <button type="button" class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
               <!-- Delete button -->
             </td>
@@ -83,9 +85,18 @@ th {
 }
 
 button {
-  margin: 20px;
-  background-color: red;
-  border: black;
-  border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: .3pc;
+    border: 2px solid red;
+    color: white;
+    background-color: red;
+    transition: all .3s;
+}
+
+button:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    color: red;
+    border-color: red;
+    background-color: white;
 }
 </style>

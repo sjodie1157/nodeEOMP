@@ -167,10 +167,14 @@ button:hover {
 }
 
 
+
 input {
     min-width: 2em;
 }
 
+input:hover {
+     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
 input:focus {
     min-width: 2em;
     border-color: red;
@@ -206,6 +210,9 @@ span {
     border: 3px solid black;
     transition: all .3s;
     margin: 2em;
+}
+.col-2:hover {
+     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 h3 {
@@ -244,4 +251,6 @@ img[alt="cons"]:hover {
 img[alt="lapcat"]:hover {
     width: 220px;
 }
+
+
 </style>

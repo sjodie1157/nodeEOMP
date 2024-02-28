@@ -92,7 +92,20 @@ img[alt="signup"]:hover {
 }
 
 /* buttons */
+button {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border: 0 solid white;
+    color: white;
+    background-color: red;
+    transition: all .3s;
+}
 
+button:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    color: red;
+    border-color: red;
+    background-color: white;
+}
 .btn1 {
     background-color: red;
     border: 2px solid red;
