@@ -1,0 +1,95 @@
+<template>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addprodmodal"
+            data-bs-whatever="@mdo">Add Product</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addprodmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="addProduct">
+                            <div class="mb-3">
+                                <label for="prodName" class="col-form-label">Product Name:</label>
+                                <input type="text" class="form-control" id="prodName" v-model="newProduct.prodName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="col-form-label">Quantity:</label>
+                                <input type="text" class="form-control" id="quantity" v-model="newProduct.quantity">
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="col-form-label">Price:</label>
+                                <input type="number" class="form-control" id="price" v-model="newProduct.price">
+                            </div>
+                            <div class="mb-3">
+                                <label for="category" class="col-form-label">Category:</label>
+                                <input type="text" class="form-control" id="category" v-model="newProduct.category">
+                            </div>
+                            <div class="mb-3">
+                                <label for="prodDesc" class="col-form-label">Product Description:</label>
+                                <textarea class="form-control" id="prodDesc" v-model="newProduct.prodDesc"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="imgUrl" class="col-form-label">Image URL:</label>
+                                <input type="text" class="form-control" id="imgUrl" v-model="newProduct.imgUrl">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Add Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            newProduct: {
+                prodName: null,
+                quantity: null,
+                price: null,
+                category: null,
+                prodDesc: null,
+                imgUrl: null
+            }
+        };
+    },
+    methods: {
+        addProduct() {
+            // Note to Naeema: Generate unique ID for the new product
+            const timestamp = Date.now();
+            this.newProduct.prodID = timestamp;
+
+            // Note to Naeema: Dispatch addProduct action with new product data
+            this.$store.dispatch('addProduct', this.newProduct);
+
+            // Note to Naeema: Clear input fields after adding the product
+            this.clearInputFields();
+
+            // Note to Naeema: Reload page after adding the product
+            setTimeout(() => {
+                location.reload()
+            }, 300);
+        },
+        clearInputFields() {
+            // Note to Naeema: Clear all input fields in newProduct object
+            Object.keys(this.newProduct).forEach(key => {
+                this.newProduct[key] = null;
+            });
+        }
+    }
+}
+</script>
+
+<style scoped>
+</style>
