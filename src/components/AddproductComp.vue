@@ -78,7 +78,7 @@ export default {
 
             // Note to Naeema: Reload page after adding the product
             setTimeout(() => {
-                location.reload()
+                location.href('https://technoflex-zone.web.app/admin')
             }, 300);
         },
         clearInputFields() {
