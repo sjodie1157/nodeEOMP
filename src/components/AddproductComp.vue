@@ -110,4 +110,10 @@ button:hover {
     border-color: red;
     background-color: white;
 }
+
+input:focus,textarea:focus {
+    min-width: 2em;
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
 </style>
