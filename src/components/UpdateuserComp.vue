@@ -85,12 +85,15 @@ export default {
     },
     methods: {
         editUser() {
-            // Note to Naeema: Dispatch editUser action with updated user information
+            try {
+                // Note to Naeema: Dispatch editUser action with updated user information
             this.$store.dispatch('editUser', { newInfo: this.editInfo, userID: this.user.userID });
             // Note to Naeema: Reload the page after editing
             setTimeout(() => {
                 location.reload();
             }, 300);
+            } catch (err) {console.log(`This is the updateUserComp. The following error was found ${err}`)}
+            
         }
     }
 };
