@@ -4,8 +4,8 @@
             <div class="col d-flex flex-wrap justify-content-lg-start justify-content-center justify-content-sm-center">
                 <div v-for="product in filteredProducts" :key="product.prodID">
                     <div class="card m-2" style="width: 14.9rem;">
-                        <img :src="product.imgUrl" class="card-img-top" :alt="product.prodName" loading="eager">
-                        <div class="card-body d-flex flex-column justify-content-end">
+                        <img :src="product.imgUrl" class="card-img-top mt-5" :alt="product.prodName" loading="eager">
+                        <div class="card-body d-flex flex-column justify-content-end mb-3">
                             <h5 class="card-title">
                                 <slot name="ProductName" :product="product"></slot>
                             </h5>
@@ -43,6 +43,7 @@ export default {
     height: 30rem;
     transition: all .3s;
 }
+
 .card:hover {
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
@@ -62,5 +63,4 @@ button:hover {
     border-color: red;
     background-color: white;
 }
-
 </style>
