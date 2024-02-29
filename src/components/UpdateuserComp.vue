@@ -1,11 +1,12 @@
 <template>
     <div>
-        <!-- Note to Naeema: Added button to trigger the Bootstrap modal and added the product ids
+        <!-- Note to Naeema: Added button to trigger the Bootstrap modal and added the user userID -->
         <button type="button" class="btn my-2" data-bs-toggle="modal" :data-bs-target="'#editusermodal' + user.userID">
             Edit
         </button>
-        Note to Naeema: Bootstrap modal for editing product Changed from the created one
-        <div class="modal fade" :id="'editusermodal' + user.userID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Note to Naeema: Bootstrap modal for editing user Changed from the created one -->
+        <div class="modal fade" :id="'editusermodal' + user.userID" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -15,89 +16,109 @@
                     <div class="modal-body">
                         <form @submit.prevent="editUser">
                             <div class="mb-3">
-                                <label for="username" class="col-form-label">Username:</label>
-                                <input type="text" class="form-control" id="username" v-model="editInfo.username">
+                                <label for="username" class="form-label">New Username:</label>
+                                <input type="text" class="form-control" id="username" v-model="user.username">
                             </div>
                             <div class="mb-3">
-                                <label for="txtPassword" class="col-form-label">Password:</label>
-                                <input type="text" class="form-control" id="txtPassword" v-model="editInfo.txtPassword">
+                                <label for="txtPassword" class="form-label">Create Password:</label>
+                                <input type="password" class="form-control" id="txtPassword" v-model="user.txtPassword"
+                                >
                             </div>
                             <div class="mb-3">
-                                <label for="firstName" class="col-form-label">First Name:</label>
-                                <input type="text" class="form-control" id="firstName" v-model="editInfo.firstName">
+                                <label for="firstName" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="firstName" v-model="user.firstName">
                             </div>
                             <div class="mb-3">
-                                <label for="lastName" class="col-form-label">Last Name:</label>
-                                <input type="text" class="form-control" id="lastName" v-model="editInfo.lastName">
+                                <label for="lastName" class="form-label">Surname:</label>
+                                <input type="text" class="form-control" id="lastName" v-model="user.lastName">
                             </div>
                             <div class="mb-3">
-                                <label for="userAge" class="col-form-label">User Age:</label>
-                                <input type="number" class="form-control" id="userAge" v-model="editInfo.userAge">
+                                <label for="userAge" class="form-label">Age:</label>
+                                <input type="number" class="form-control" id="userAge" v-model="user.userAge">
                             </div>
                             <div class="mb-3">
-                                <label for="gender" class="col-form-label">Gender:</label>
-                                <input type="text" class="form-control" id="gender" v-model="editInfo.gender">
+                                <label class="form-label">Gender:</label>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="male" value="male"
+                                        v-model="user.gender">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="female" value="female"
+                                        v-model="user.gender">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <label for="emailAddress" class="col-form-label">Email Address:</label>
-                                <input type="email" class="form-control" id="emailAddress" v-model="editInfo.emailAddress">
+                                <label for="emailAdd" class="form-label">Email Address:</label>
+                                <input type="email" class="form-control" id="emailAdd" v-model="user.emailAdd">
                             </div>
                             <div class="mb-3">
-                                <label for="userProfile" class="col-form-label">User Profile:</label>
-                                <input type="text" class="form-control" id="userProfile" v-model="editInfo.userProfile">
+                                <label for="userProfile" class="form-label">User Description:</label>
+                                <textarea class="form-control" id="userProfile" v-model="user.userProfile"
+                                ></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="userRole" class="col-form-label">User Role:</label>
-                                <input type="text" class="form-control" id="userRole" v-model="editInfo.userRole">
+                            <label class="form-label">User Role:</label>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="user" value="user" v-model="user.userRole">
+                                <label class="form-check-label" for="user">User</label>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="admin" value="admin"
+                                    v-model="user.userRole">
+                                <label class="form-check-label" for="admin">Admin</label>
                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script>
+
 export default {
-    props: {
-        user: Object
-    },
     data() {
         return {
-            // Note to Naeema: Initialize editInfo with current product details
-            editInfo: {
-                username: null,
-                txtPassword: null,
-                firstName: null,
-                lastName: null,
-                userAge: null,
-                gender: null,
-                emailAdd: null,
-                userProfile: null,
-                userRole: null
+            user: {
+                username: this.username,
+                txtPassword: this.txtPassword,
+                firstName: this.firstName,
+                lastName: this.lastName,
+                userAge: this.userAge,
+                gender: this.gender,
+                emailAdd: this.emailAdd,
+                userProfile: this.userProfile
             }
         };
     },
     methods: {
-        editUser() {
+        async editUser() {
             try {
-                // Note to Naeema: Dispatch editUser action with updated user information
-            this.$store.dispatch('editUser', { newInfo: this.editInfo, userID: this.user.userID });
-            // Note to Naeema: Reload the page after editing
+                await fetch(`https://nodeeomp-api.onrender.com/users/${this.user.userID}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.user)
+                });
+                this.refresh();
+            } catch (error) {
+                console.error('Error editing user:', error);
+            }
+        },
+        refresh() {
             setTimeout(() => {
                 location.reload();
             }, 300);
-            } catch (err) {console.log(`This is the updateUserComp. The following error was found ${err}`)}
-            
         }
     }
 };
+
 </script>
+
 
 <style scoped>
 button {
@@ -115,5 +136,4 @@ button:hover {
     border-color: red;
     background-color: white;
 }
-
 </style>

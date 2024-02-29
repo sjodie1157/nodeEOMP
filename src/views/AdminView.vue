@@ -29,7 +29,7 @@
             <td>{{ product.category }}</td>
             <td>{{ product.prodDesc }}</td>
             <td>
-              <UpdateproductComp :product="product" @editProduct="editProduct"/>
+              <UpdateproductComp :product="product" @editProduct="editProduct" />
               <button type="button" class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
               <!-- Delete button -->
             </td>
@@ -37,10 +37,10 @@
         </tbody>
       </table>
     </div>
-<!-- PRODUCT CRUD SYSTEM ENDS HERE -->
+    <!-- PRODUCT CRUD SYSTEM ENDS HERE -->
 
-<!-- USER CRUD SYSTEM STARTS HERE -->
-<h1>Users</h1>
+    <!-- USER CRUD SYSTEM STARTS HERE -->
+    <h1>Users</h1>
     <!-- AddUsersModal component -->
     <div class="container my-4">
       <AdduserComp />
@@ -76,8 +76,10 @@
             <td>{{ user.userProfile }}</td>
             <td>{{ user.userRole }}</td>
             <td>
-              <button type="button" class="btn btn-danger" @click="deleteUser(user)">Delete</button>
+              <!-- Edit button -->
+              <UpdateuserComp :user="user" @editUser="editUser" />
               <!-- Delete button -->
+              <button type="button" class="btn btn-danger" @click="deleteUser(user)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -91,13 +93,15 @@
 import AddproductComp from '@/components/AddproductComp.vue';
 import AdduserComp from '@/components/AdduserComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
+import UpdateuserComp from '@/components/UpdateuserComp.vue';
 
 
 export default {
   components: {
     UpdateproductComp,
     AddproductComp,
-    AdduserComp
+    AdduserComp,
+    UpdateuserComp
   },
   methods: {
     async deleteProduct(product) {
@@ -113,7 +117,7 @@ export default {
     },
     editProduct() {
       setTimeout(() => {
-        location.reload
+        location.reload();
       }, 300);
     },
     async deleteUser(user) {
@@ -129,7 +133,7 @@ export default {
     },
     editUser() {
       setTimeout(() => {
-        location.reload
+        location.reload();
       }, 300);
     }
   },
@@ -156,18 +160,18 @@ th {
 }
 
 button {
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-    border-radius: .3pc;
-    border: 2px solid red;
-    color: white;
-    background-color: red;
-    transition: all .3s;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border-radius: .3pc;
+  border: 2px solid red;
+  color: white;
+  background-color: red;
+  transition: all .3s;
 }
 
 button:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    color: red;
-    border-color: red;
-    background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  color: red;
+  border-color: red;
+  background-color: white;
 }
 </style>
