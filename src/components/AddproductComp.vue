@@ -10,7 +10,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">New Product</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
                     </div>
                     <div class="modal-body">
                         <form @submit.prevent="addProduct">
@@ -39,7 +39,7 @@
                                 <input type="text" class="form-control" id="imgUrl" v-model="newProduct.imgUrl">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
                                 <button type="submit" class="btn btn-primary">Add Product</button>
                             </div>
                         </form>
@@ -77,16 +77,17 @@ export default {
             this.clearInputFields();
 
             // Note to Naeema: Reload page after adding the product
-            // setTimeout(() => {
-            //     location.href('https://technoflex-zone.web.app/admin')
-            // }, 300);
-            
         },
         clearInputFields() {
             // Note to Naeema: Clear all input fields in newProduct object
             Object.keys(this.newProduct).forEach(key => {
                 this.newProduct[key] = null;
             });
+        },
+        closeModal() {
+            setTimeout(() => {
+                location.reload()
+            }, 300);
         }
     }
 }
