@@ -138,7 +138,7 @@ export default {
   .sec-red,
   #sec2 {
     background-color: black;
-    height: 5vh;
+    height: 7vh;
   }
 
   h2 {
