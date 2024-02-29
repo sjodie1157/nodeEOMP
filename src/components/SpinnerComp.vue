@@ -12,6 +12,12 @@ export default {
 
 <style scoped>
 img[alt="spinner"] {
-    width: 500px;
+    max-width: 500px;
+}
+
+@media screen and (max-width: 720px) {
+    img[alt="spinner"] {
+        width: 100%;
+    }
 }
 </style>
