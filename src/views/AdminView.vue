@@ -4,7 +4,7 @@
     <h1>Products</h1>
     <!-- AddProductModal component -->
     <div class="container my-4">
-      <!-- <AddproductComp /> -->
+      <AddproductComp />
     </div>
 
     <div class="table-responsive">
@@ -43,7 +43,7 @@
 <h1>Users</h1>
     <!-- AddUsersModal component -->
     <div class="container my-4">
-      <AdduserComp />
+      <!-- <AdduserComp /> -->
     </div>
 
     <div class="table-responsive">
