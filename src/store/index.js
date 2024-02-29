@@ -28,7 +28,7 @@ export default createStore({
     removeProduct(state, prodID) {
       state.products = state.products.filter(product => product.prodID !== prodID);
     },
-    setUsers(state, value) {
+    setUser(state, value) {
       state.users = value;
     },
     removeUser(state, userID) {
@@ -92,7 +92,7 @@ export default createStore({
           throw new Error('Failed to fetch users');
         }
         let json = await res.json();
-        context.commit('setUsers', json);
+        context.commit('setUser', json);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
