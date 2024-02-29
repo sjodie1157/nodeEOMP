@@ -95,7 +95,7 @@ import UpdateproductComp from '@/components/UpdateproductComp.vue';
 export default {
   components: {
     UpdateproductComp,
-    AddproductComp,
+    AddproductComp
   },
   methods: {
     async deleteProduct(product) {
