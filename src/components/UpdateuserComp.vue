@@ -1,10 +1,10 @@
 <template>
     <div>
-        <!-- Note to Naeema: Added button to trigger the Bootstrap modal and added the product ids -->
+        <!-- Note to Naeema: Added button to trigger the Bootstrap modal and added the product ids
         <button type="button" class="btn my-2" data-bs-toggle="modal" :data-bs-target="'#editusermodal' + user.userID">
             Edit
         </button>
-        <!-- Note to Naeema: Bootstrap modal for editing product Changed from the created one -->
+        Note to Naeema: Bootstrap modal for editing product Changed from the created one
         <div class="modal fade" :id="'editusermodal' + user.userID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -16,39 +16,39 @@
                         <form @submit.prevent="editUser">
                             <div class="mb-3">
                                 <label for="username" class="col-form-label">Username:</label>
-                                <input type="text" class="form-control" id="username" v-model="newUser.username">
+                                <input type="text" class="form-control" id="username" v-model="editInfo.username">
                             </div>
                             <div class="mb-3">
                                 <label for="txtPassword" class="col-form-label">Password:</label>
-                                <input type="text" class="form-control" id="txtPassword" v-model="newUser.txtPassword">
+                                <input type="text" class="form-control" id="txtPassword" v-model="editInfo.txtPassword">
                             </div>
                             <div class="mb-3">
                                 <label for="firstName" class="col-form-label">First Name:</label>
-                                <input type="text" class="form-control" id="firstName" v-model="newUser.firstName">
+                                <input type="text" class="form-control" id="firstName" v-model="editInfo.firstName">
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="col-form-label">Last Name:</label>
-                                <input type="text" class="form-control" id="lastName" v-model="newUser.lastName">
+                                <input type="text" class="form-control" id="lastName" v-model="editInfo.lastName">
                             </div>
                             <div class="mb-3">
                                 <label for="userAge" class="col-form-label">User Age:</label>
-                                <input type="number" class="form-control" id="userAge" v-model="newUser.userAge">
+                                <input type="number" class="form-control" id="userAge" v-model="editInfo.userAge">
                             </div>
                             <div class="mb-3">
                                 <label for="gender" class="col-form-label">Gender:</label>
-                                <input type="text" class="form-control" id="gender" v-model="newUser.gender">
+                                <input type="text" class="form-control" id="gender" v-model="editInfo.gender">
                             </div>
                             <div class="mb-3">
                                 <label for="emailAddress" class="col-form-label">Email Address:</label>
-                                <input type="email" class="form-control" id="emailAddress" v-model="newUser.emailAddress">
+                                <input type="email" class="form-control" id="emailAddress" v-model="editInfo.emailAddress">
                             </div>
                             <div class="mb-3">
                                 <label for="userProfile" class="col-form-label">User Profile:</label>
-                                <input type="text" class="form-control" id="userProfile" v-model="newUser.userProfile">
+                                <input type="text" class="form-control" id="userProfile" v-model="editInfo.userProfile">
                             </div>
                             <div class="mb-3">
                                 <label for="userRole" class="col-form-label">User Role:</label>
-                                <input type="text" class="form-control" id="userRole" v-model="newUser.userRole">
+                                <input type="text" class="form-control" id="userRole" v-model="editInfo.userRole">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -58,14 +58,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        product: Object
+        user: Object
     },
     data() {
         return {

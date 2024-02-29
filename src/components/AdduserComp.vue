@@ -1,10 +1,10 @@
 <template>
     <div>
-        <!-- Button trigger modal -->
+        <!-- Button trigger modal
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addusermodal"
             data-bs-whatever="@mdo">Add User</button>
 
-        <!-- Modal -->
+        Modal
         <div class="modal fade" id="addusermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="emailAddress" class="col-form-label">Email Address:</label>
-                                <input type="email" class="form-control" id="emailAddress" v-model="newUser.emailAddress">
+                                <input type="email" class="form-control" id="emailAddress" v-model="newUser.emailAdd">
                             </div>
                             <div class="mb-3">
                                 <label for="userProfile" class="col-form-label">User Profile:</label>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -67,6 +67,7 @@ export default {
     data() {
         return {
             newUser: {
+                userID: null,
                 username: null,
                 txtPassword: null,
                 firstName: null,
@@ -81,22 +82,22 @@ export default {
     },
     methods: {
         addUser() {
-            // Note to Naeema: Generate unique ID for the new product
+            // Note to Naeema: Generate unique ID for the new user
             const timestamp = Date.now();
-            this.newProduct.prodID = timestamp;
+            this.newUser.userID = timestamp;
 
-            // Note to Naeema: Dispatch addProduct action with new product data
+            // Note to Naeema: Dispatch adduser action with new user data
             this.$store.dispatch('addUser', this.newUser);
 
-            // Note to Naeema: Clear input fields after adding the product
+            // Note to Naeema: Clear input fields after adding the user
             this.clearInputFields();
 
-            // Note to Naeema: Reload page after adding the product
+            // Note to Naeema: Reload page after adding the user
         },
         clearInputFields() {
-            // Note to Naeema: Clear all input fields in newProduct object
-            Object.keys(this.newProduct).forEach(key => {
-                this.newProduct[key] = null;
+            // Note to Naeema: Clear all input fields in newuser object
+            Object.keys(this.newUser).forEach(key => {
+                this.newUser[key] = null;
             });
         },
         closeModal() {

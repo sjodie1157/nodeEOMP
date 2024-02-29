@@ -43,14 +43,14 @@
 <h1>Users</h1>
     <!-- AddUsersModal component -->
     <div class="container my-4">
-      <AdduserComp />
+      <!-- <AdduserComp /> -->
     </div>
 
     <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
-            <th>User ID</th>
+            <th>userID</th>
             <th>Username</th>
             <th>Hashed password</th>
             <th>First Name</th>
@@ -72,7 +72,7 @@
             <td>{{ user.lastName }}</td>
             <td>{{ user.userAge }}</td>
             <td>{{ user.gender }}</td>
-            <td>{{ user.emailAdd }}</td>
+            <td>{{ user.emailAddress }}</td>
             <td>{{ user.userProfile }}</td>
             <td>{{ user.userRole }}</td>
             <td>
@@ -91,8 +91,8 @@
 <script>
 import AddproductComp from '@/components/AddproductComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
-import AdduserComp from '@/components/AdduserComp.vue';
-// // import UpdateuserComp from '@/components/UpdateuserComp.vue';
+// // import AdduserComp from '@/components/AdduserComp.vue';
+// import UpdateuserComp from '@/components/UpdateuserComp.vue';
 
 
 export default {
@@ -100,7 +100,7 @@ export default {
     UpdateproductComp,
     AddproductComp,
     // UpdateuserComp,
-    AdduserComp
+    // AdduserComp
   },
   methods: {
     async deleteProduct(product) {
@@ -140,12 +140,12 @@ export default {
     try {
       this.$store.dispatch('fetchProducts');
     } catch (error) {
-      console.error(error);
+      console.error(`This is the fetchProduct fx of the admin view. The following error was found: ${error}`);
     }
     try {
       this.$store.dispatch('fetchUsers');
     } catch (error) {
-      console.error(error);
+      console.error(`This is the fetchUser fx of the admin view. The following error was found: ${error}`);
     }
   }
 };
