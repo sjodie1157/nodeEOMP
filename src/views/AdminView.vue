@@ -43,7 +43,7 @@
 <h1>Users</h1>
     <!-- AddUsersModal component -->
     <div class="container my-4">
-      <!-- <AdduserComp /> -->
+      <AdduserComp />
     </div>
 
     <div class="table-responsive">
@@ -67,7 +67,7 @@
           <tr v-for="user in $store.state.users" :key="user.userID">
             <td>{{ user.userID }}</td>
             <td>{{ user.username }}</td>
-            <td>{{ user.hashPassword }}</td>
+            <td>{{ user.hashedPassword }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.userAge }}</td>
@@ -89,13 +89,15 @@
 
 <script>
 import AddproductComp from '@/components/AddproductComp.vue';
+import AdduserComp from '@/components/AdduserComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
 
 
 export default {
   components: {
     UpdateproductComp,
-    AddproductComp
+    AddproductComp,
+    AdduserComp
   },
   methods: {
     async deleteProduct(product) {
