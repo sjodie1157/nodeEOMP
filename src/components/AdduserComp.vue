@@ -1,57 +1,61 @@
 <template>
     <div>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addusermodal"
-            data-bs-whatever="@mdo">Add User</button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="addusermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal" id="modalBtn">
+            Add user
+        </button>
+        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">New User</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            @click="closeModal"></button>
+                        <h5 class="modal-title" id="signupModalLabel">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form @submit.prevent="addUser">
                             <div class="mb-3">
-                                <label for="username" class="col-form-label">User Name:</label>
-                                <input type="text" class="form-control" id="username" v-model="newUser.username">
-                            </div>
-                            <div class="mb-3">
-                                <label for="hashPassword" class="col-form-label">Password:</label>
-                                <input type="password" class="form-control" id="hashPassword" v-model="newUser.hashPassword">
+                                <label for="username" class="form-label">New Username:</label>
+                                <input type="text" class="form-control" id="username" v-model="user.username" required>
                             </div>
                             <div class="mb-3">
-                                <label for="firstName" class="col-form-label">firstName:</label>
-                                <input type="text" class="form-control" id="firstName" v-model="newUser.firstName">
+                                <label for="txtPassword" class="form-label">Create Password:</label>
+                                <input type="password" class="form-control" id="txtPassword" v-model="user.txtPassword"
+                                    required>
                             </div>
                             <div class="mb-3">
-                                <label for="lastName" class="col-form-label">lastName:</label>
-                                <input type="text" class="form-control" id="lastName" v-model="newUser.lastName">
+                                <label for="firstName" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="firstName" v-model="user.firstName" required>
                             </div>
                             <div class="mb-3">
-                                <label for="userAge" class="col-form-label">User age:</label>
-                                 <input type="number" class="form-control" id="userAge" v-model="newUser.userAge">
+                                <label for="lastName" class="form-label">Surname:</label>
+                                <input type="text" class="form-control" id="lastName" v-model="user.lastName" required>
                             </div>
                             <div class="mb-3">
-                                <label for="gender" class="col-form-label">gender:</label>
-                                <input type="text" class="form-control" id="gender" v-model="newUser.gender">
+                                <label for="userAge" class="form-label">Age:</label>
+                                <input type="number" class="form-control" id="userAge" v-model="user.userAge" required>
                             </div>
                             <div class="mb-3">
-                                <label for="emailAddress" class="col-form-label">email Address:</label>
-                                <input type="email" class="form-control" id="emailAddress" v-model="newUser.emailAddress">
+                                <label class="form-label">Gender:</label>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="male" value="male"
+                                        v-model="user.gender">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="female" value="female"
+                                        v-model="user.gender">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <label for="userProfile" class="col-form-label">user Profile:</label>
-                                <input type="text" class="form-control" id="userProfile" v-model="newUser.userProfile">
+                                <label for="emailAdd" class="form-label">Email Adress:</label>
+                                <input type="email" class="form-control" id="emailAdd" v-model="user.emailAdd" required>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                    @click="closeModal">Close</button>
-                                <button type="submit" class="btn btn-primary" @click="addUser">Add User</button>
+                            <div class="mb-3">
+                                <label for="userProfile" class="form-label">User Description:</label>
+                                <textarea class="form-control" id="userProfile" v-model="user.userProfile"
+                                    required></textarea>
                             </div>
+                            <button type="submit" class="btn btn-primary">Submit new user</button>
                         </form>
                     </div>
                 </div>
@@ -64,49 +68,49 @@
 export default {
     data() {
         return {
-            newUser: {
-                userID: null,
-                username: null,
-                hashPassword: null,
-                firstName: null,
-                lastName: null,
-                userAge: null,
-                gender: null,
-                emailAddress: null,
-                userProfile: null,
-                userRole: null
+            user: {
+                username: '',
+                txtPassword: '',
+                firstName: '',
+                lastName: '',
+                userAge: '',
+                gender: '',
+                emailAdd: '',
+                userProfile: ''
             }
         };
     },
     methods: {
-        addUser() {
-            // Note to Naeema: Generate unique ID for the new User
-            const timestamp = Date.now();
-            this.newUser.userID = timestamp;
-
-            // Note to Naeema: Dispatch addUser action with new User data
-            this.$store.dispatch('setUser', this.newUser);
-
-            // Note to Naeema: Clear input fields after adding the User
-            this.clearInputFields();
-
-            // Note to Naeema: Reload page after adding the User
-            this.closeModal()
-        },
-        clearInputFields() {
-            // Note to Naeema: Clear all input fields in newUser object
-            Object.keys(this.newUser).forEach(key => {
-                this.newUser[key] = null;
+        async addUser() {
+            await fetch(`https://nodeeomp-api.onrender.com/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.user)
             });
+
+            this.user = {
+                username: '',
+                txtPassword: '',
+                firstName: '',
+                lastName: '',
+                userAge: '',
+                gender: '',
+                emailAdd: '',
+                userProfile: ''
+            };
+            this.refresh();
         },
-        closeModal() {
+        refresh() {
             setTimeout(() => {
-                location.reload()
+                location.reload();
             }, 300);
         }
     }
-}
+};
 </script>
+
 
 <style scoped>
 button {
