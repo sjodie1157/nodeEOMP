@@ -4,7 +4,7 @@
     <h1>Products</h1>
     <!-- AddProductModal component -->
     <div class="container my-4">
-      <AddproductComp />
+      <!-- <AddproductComp /> -->
     </div>
 
     <div class="table-responsive">
@@ -90,14 +90,12 @@
 <script>
 import AddproductComp from '@/components/AddproductComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
-import AdduserComp from '@/components/AdduserComp.vue';
 
 
 export default {
   components: {
     UpdateproductComp,
     AddproductComp,
-    AdduserComp
   },
   methods: {
     async deleteProduct(product) {
