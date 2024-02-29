@@ -128,4 +128,16 @@ button:hover {
     border-color: red;
     background-color: white;
 }
+
+button:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    color: red;
+    border-color: red;
+    background-color: white;
+}
+
+input:focus,textarea:focus {
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
 </style>

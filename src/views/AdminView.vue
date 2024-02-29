@@ -77,6 +77,7 @@
             <td>{{ user.userProfile }}</td>
             <td>{{ user.userRole }}</td>
             <td>
+              <UpdateuserComp :user="user" @editUser="editUser"/>
               <button type="button" class="btn btn-danger" @click="deleteUser(user)">Delete</button>
             </td>
           </tr>
@@ -92,6 +93,7 @@ import AddproductComp from '@/components/AddproductComp.vue';
 import AdduserComp from '@/components/AdduserComp.vue';
 import SpinnerComp from '@/components/SpinnerComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
+import UpdateuserComp from '@/components/UpdateuserComp.vue';
 
 
 export default {
@@ -99,7 +101,8 @@ export default {
     UpdateproductComp,
     AddproductComp,
     AdduserComp,
-    SpinnerComp
+    SpinnerComp,
+    UpdateuserComp
   },
   methods: {
     async deleteProduct(product) {
