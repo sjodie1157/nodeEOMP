@@ -62,9 +62,10 @@ export default {
         alert('Failed to delete product');
       }
     },
-    editProduct(product) {
-      // Handle edit action here, e.g., navigate to edit page or show modal
-      console.log('Edit product:', product);
+    editProduct() {
+      setTimeout(() => {
+        location.reload
+      }, 300);
     }
   },
   mounted() {
