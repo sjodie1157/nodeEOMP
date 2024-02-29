@@ -72,7 +72,7 @@
             <td>{{ user.lastName }}</td>
             <td>{{ user.userAge }}</td>
             <td>{{ user.gender }}</td>
-            <td>{{ user.emailAddress }}</td>
+            <td>{{ user.emailAdd }}</td>
             <td>{{ user.userProfile }}</td>
             <td>{{ user.userRole }}</td>
             <td>
