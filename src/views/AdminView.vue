@@ -2,12 +2,14 @@
   <div>
     <h2>Inventory configure</h2>
     <h1>Products</h1>
-    <!-- AddProductModal component -->
     <div class="container my-4">
       <AddproductComp />
     </div>
 
-    <div class="table-responsive">
+    <div v-if="$store.state.loadingProducts">
+      <SpinnerComp />
+    </div>
+    <div v-else class="table-responsive">
       <table class="table">
         <thead>
           <tr>
@@ -17,7 +19,7 @@
             <th>Price</th>
             <th>Category</th>
             <th>Product Description</th>
-            <th>Action</th> <!-- Added column for action -->
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -31,22 +33,21 @@
             <td>
               <UpdateproductComp :product="product" @editProduct="editProduct" />
               <button type="button" class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
-              <!-- Delete button -->
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <!-- PRODUCT CRUD SYSTEM ENDS HERE -->
 
     <!-- USER CRUD SYSTEM STARTS HERE -->
     <h1>Users</h1>
-    <!-- AddUsersModal component -->
     <div class="container my-4">
       <AdduserComp />
     </div>
-
-    <div class="table-responsive">
+    <div v-if="$store.state.loadingUsers">
+      <SpinnerComp />
+    </div>
+    <div v-else class="table-responsive">
       <table class="table">
         <thead>
           <tr>
@@ -60,7 +61,7 @@
             <th>Email Address</th>
             <th>User Profile</th>
             <th>User Role</th>
-            <th>Action</th> <!-- Added column for action -->
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -76,9 +77,6 @@
             <td>{{ user.userProfile }}</td>
             <td>{{ user.userRole }}</td>
             <td>
-              <!-- Edit button -->
-              <UpdateuserComp :user="user" @editUser="editUser" />
-              <!-- Delete button -->
               <button type="button" class="btn btn-danger" @click="deleteUser(user)">Delete</button>
             </td>
           </tr>
@@ -92,8 +90,8 @@
 <script>
 import AddproductComp from '@/components/AddproductComp.vue';
 import AdduserComp from '@/components/AdduserComp.vue';
+import SpinnerComp from '@/components/SpinnerComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
-import UpdateuserComp from '@/components/UpdateuserComp.vue';
 
 
 export default {
@@ -101,7 +99,7 @@ export default {
     UpdateproductComp,
     AddproductComp,
     AdduserComp,
-    UpdateuserComp
+    SpinnerComp
   },
   methods: {
     async deleteProduct(product) {
@@ -117,7 +115,7 @@ export default {
     },
     editProduct() {
       setTimeout(() => {
-        location.reload();
+        location.reload
       }, 300);
     },
     async deleteUser(user) {
@@ -133,7 +131,7 @@ export default {
     },
     editUser() {
       setTimeout(() => {
-        location.reload();
+        location.reload
       }, 300);
     }
   },

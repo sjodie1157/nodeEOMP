@@ -5,7 +5,9 @@ export default createStore({
   state: {
     products: null,
     product: null,
-    users: null
+    users: null,
+    loadingProducts: false,
+    loadingUsers: false
   },
   getters: {
     allProducts(state) {
@@ -33,11 +35,18 @@ export default createStore({
     },
     removeUser(state, userID) {
       state.users = state.users.filter(user => user.userID !== userID);
+    },
+    setLoadingProducts(state, value) {
+      state.loadingProducts = value;
+    },
+    setLoadingUsers(state, value) {
+      state.loadingUsers = value;
     }
   },
   actions: {
     async fetchProducts(context) {
       try {
+        context.commit('setLoadingProducts', true);
         let res = await fetch(`https://nodeeomp-api.onrender.com/products`);
         if (!res.ok) {
           throw new Error('Failed to fetch products');
@@ -46,6 +55,8 @@ export default createStore({
         context.commit('setProducts', json);
       } catch (error) {
         console.error('Error fetching products:', error);
+      } finally {
+        context.commit('setLoadingProducts', false);
       }
     },
     async fetchProduct(context, prodID) {
@@ -87,6 +98,7 @@ export default createStore({
     },
     async fetchUsers(context) {
       try {
+        context.commit('setLoadingUsers', true);
         let res = await fetch(`https://nodeeomp-api.onrender.com/users`);
         if (!res.ok) {
           throw new Error('Failed to fetch users');
@@ -95,6 +107,8 @@ export default createStore({
         context.commit('setUser', json);
       } catch (error) {
         console.error('Error fetching users:', error);
+      } finally {
+        context.commit('setLoadingUsers', false);
       }
     },
     async editUser(context, { newInfo, userID }) {
