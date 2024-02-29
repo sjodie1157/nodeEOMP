@@ -6,7 +6,7 @@
                     <div class="col d-flex justify-content-start">
                         <img :src="product[0].imgUrl" alt="product">
                     </div>
-                    <div class="col-sm d-flex flex-column align-items-start my-2 justify-content-around">
+                    <div class="col d-flex flex-column align-items-start my-3">
                         <h2>Item Name: {{ product[0].prodName }}</h2>
                         <h3>Price: R{{ product[0].price }}</h3>
                         <h3 class="d-flex align-items-start">Specs: {{ product[0].prodDesc }}</h3>
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex justify-content-start">
+                    <div class="col d-flex justify-content-start mt-5">
                         <h3>Reviews</h3>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ img[alt="product"] {
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.container{ 
+.container {
     margin: 3rem auto auto auto;
 }
 </style>
