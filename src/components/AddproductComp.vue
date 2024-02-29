@@ -77,6 +77,7 @@ export default {
             this.clearInputFields();
 
             // Note to Naeema: Reload page after adding the product
+            this.closeModal()
         },
         clearInputFields() {
             // Note to Naeema: Clear all input fields in newProduct object

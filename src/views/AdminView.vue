@@ -37,6 +37,53 @@
         </tbody>
       </table>
     </div>
+<!-- PRODUCT CRUD SYSTEM ENDS HERE -->
+
+<!-- USER CRUD SYSTEM STARTS HERE -->
+<h1>Users</h1>
+    <!-- AddUsersModal component -->
+    <div class="container my-4">
+      <AdduserComp />
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Hashed password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Age</th>
+            <th>Gender</th>
+            <th>Email Address</th>
+            <th>User Profile</th>
+            <th>User Role</th>
+            <th>Action</th> <!-- Added column for action -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in $store.state.users" :key="user.userID">
+            <td>{{ user.userID }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.hashPassword }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.userAge }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.emailAdd }}</td>
+            <td>{{ user.userProfile }}</td>
+            <td>{{ user.userRole }}</td>
+            <td>
+              <UpdateuserComp :user="user" @editUser="editUser"/>
+              <button type="button" class="btn btn-danger" @click="deleteUser(user)">Delete</button>
+              <!-- Delete button -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 </template>
@@ -44,11 +91,16 @@
 <script>
 import AddproductComp from '@/components/AddproductComp.vue';
 import UpdateproductComp from '@/components/UpdateproductComp.vue';
+import AdduserComp from '@/components/AdduserComp.vue';
+import UpdateuserComp from '@/components/UpdateuserComp.vue';
+
 
 export default {
   components: {
     UpdateproductComp,
-    AddproductComp
+    AddproductComp,
+    UpdateuserComp,
+    AdduserComp
   },
   methods: {
     async deleteProduct(product) {
@@ -66,11 +118,32 @@ export default {
       setTimeout(() => {
         location.reload
       }, 300);
+    },
+    async deleteUser(user) {
+      try {
+        await this.$store.dispatch('deleteUser', user.userID);
+        this.$store.commit('removeUser', user.userID);
+        console.log('User deleted:', user);
+        alert('User deleted successfully');
+      } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('Failed to delete user');
+      }
+    },
+    editUser() {
+      setTimeout(() => {
+        location.reload
+      }, 300);
     }
   },
   mounted() {
     try {
       this.$store.dispatch('fetchProducts');
+    } catch (error) {
+      console.error(error);
+    }
+    try {
+      this.$store.dispatch('fetchUsers');
     } catch (error) {
       console.error(error);
     }
