@@ -66,18 +66,27 @@ export default {
     },
     methods: {
         addProduct() {
-            // Note to Naeema: Generate unique ID for the new product
-            const timestamp = Date.now();
-            this.newProduct.prodID = timestamp;
+            try {
+                // Note to Naeema: Generate unique ID for the new product
+                const timestamp = Date.now();
+                this.newProduct.prodID = timestamp;
 
-            // Note to Naeema: Dispatch addProduct action with new product data
-            this.$store.dispatch('addProduct', this.newProduct);
+                // Note to Naeema: Dispatch addProduct action with new product data
+                this.$store.dispatch('addProduct', this.newProduct);
 
-            // Note to Naeema: Clear input fields after adding the product
-            this.clearInputFields();
+                // Note to Naeema: Clear input fields after adding the product
+                this.clearInputFields();
 
-            // Note to Naeema: Reload page after adding the product
-            this.closeModal()
+                // Note to Naeema: Show alert when product is successfully added
+                alert("Product has been added successfully!");
+
+                // Note to Naeema: Close modal after adding the product
+                this.closeModal();
+            } catch (error) {
+                // Note to Naeema: Handle error if dispatch fails
+                console.error("Error adding product:", error);
+                alert("Failed to add product. Please try again.");
+            }
         },
         clearInputFields() {
             // Note to Naeema: Clear all input fields in newProduct object
@@ -87,7 +96,7 @@ export default {
         },
         closeModal() {
             setTimeout(() => {
-                location.reload()
+                location.reload();
             }, 300);
         }
     }

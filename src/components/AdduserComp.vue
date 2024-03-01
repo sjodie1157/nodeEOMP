@@ -82,25 +82,31 @@ export default {
     },
     methods: {
         async addUser() {
-            await fetch(`https://nodeeomp-api.onrender.com/users`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.user)
-            });
+            try {
+                await fetch(`https://nodeeomp-api.onrender.com/users`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.user)
+                });
 
-            this.user = {
-                username: '',
-                txtPassword: '',
-                firstName: '',
-                lastName: '',
-                userAge: '',
-                gender: '',
-                emailAdd: '',
-                userProfile: ''
-            };
-            this.refresh();
+                this.user = {
+                    username: '',
+                    txtPassword: '',
+                    firstName: '',
+                    lastName: '',
+                    userAge: '',
+                    gender: '',
+                    emailAdd: '',
+                    userProfile: ''
+                };
+                this.refresh();
+                alert("User has been added successfully!");
+            } catch (error) {
+                console.error("Error adding user:", error);
+                alert("Failed to add user. Please try again.");
+            }
         },
         refresh() {
             setTimeout(() => {
@@ -110,7 +116,6 @@ export default {
     }
 };
 </script>
-
 
 <style scoped>
 button {
@@ -129,14 +134,8 @@ button:hover {
     background-color: white;
 }
 
-button:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    color: red;
-    border-color: red;
-    background-color: white;
-}
-
-input:focus,textarea:focus {
+input:focus,
+textarea:focus {
     border-color: red;
     box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }

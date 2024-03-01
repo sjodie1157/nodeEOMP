@@ -74,6 +74,7 @@ export default {
 
             if (checkFirstName && checkLastName && checkEmail && checkUserMsg) {
                 this.submitMessage = "You've submitted all your fields correctly. Thank you for contacting us";
+                alert('Submit Successful')
                 this.clearInput();
             } else {
                 this.submitMessage = "Please enter all the fields before submitting the form";
