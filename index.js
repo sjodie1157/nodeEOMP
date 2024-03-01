@@ -13,7 +13,7 @@ const app = express()
 app.use(cors())
 
 const corsOptions = {
-    origin: 'http://localhost:8080',
+    origin: 'https://technoflexzone-9e840.web.app',
     // Put in the firebase address here so Godwin can access it
     optionsSuccessStatus:200
 }
