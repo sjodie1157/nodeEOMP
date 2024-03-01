@@ -27,7 +27,7 @@
                         v-model="formData.userMessage">
                 </div>
             </div>
-            <div class="mt-3 d-flex">
+            <div class="mt-3 d-flex justify-content-evenly">
                 <button type="submit" class="btn btn-primary me-4" @click="submitBtn">Submit</button>
                 <button type="button" class="btn btn-secondary" @click="clearInput">Clear</button>
             </div>
